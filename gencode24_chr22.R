@@ -55,6 +55,9 @@ A[cbind(match(unlist(listgeneNames),rownames(A)),rep(1:ncol(A), sapply(listgeneN
 ########### built the splicing graph for each gene ##############
 # as it doesn't depend on the lr value, we can built all the SG:
 
+# Windows hack for mclapply
+# devtools::install_github('nathanvan/parallelsugar')
+# library(parallelsugar)
 
 SG_list <- mclapply(allgenes, function(X){
   selectedLoci <- which(A[X,]==1)
@@ -121,7 +124,10 @@ for(nnx in 1:length(all_posible_lr)){
     
     possiblefile <- paste0('./output/gencode24_chr22/ConvolvedMatrix_',gsub("-","_",colnames(FlData_2$fl)),'.RData')
     
-    if(file.exists(possiblefile)) next
+    if(file.exists(possiblefile)) {
+      load(possiblefile)
+      next
+    }
     
     
     command_3 <- paste0("ConvolvedMatrix_",gsub("-","_",colnames(FlData_2$fl))," <- mclapply(Bin_Graph_",milr,",function(X){

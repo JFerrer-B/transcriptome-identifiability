@@ -14,8 +14,8 @@ Applying this method using different read and fragment length combinations, the 
 * gencode24_chr22.R: main code to apply the method over the chr22 of the GenCode24 reference Transcriptome.
 
 * twolibraries_simulation.R: Code to replicate the bootstrap analysis performed in the associate article. The aim of this analysis is to discuss the potential profit of combining several libraries to reconstruct the transcriptome.
-
-
-
-
+<br>
+All data necessary to run the 3 codes is available in the `input_data` directory. Required functions are stored in the `functions` directory.
+<br>
+The code was developed using R version 4.0.3 
 
